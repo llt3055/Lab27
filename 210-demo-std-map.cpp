@@ -38,20 +38,9 @@ int main() {
         cout << "Enter choice: ";
         cin >> choice;
 
-    if (choice == 4) break;
+    if (choice = 4) break;
 
-    string searchKey = "Drago";
-    auto it = villagers.find(searchKey);
-    if (it != villagers.end()) {
-        cout << "\nFound " << searchKey << " the " << get<1>(it->second) 
-             << " with catchphrase: \"" << get<2>(it->second) << "\"" << endl;
-    }
     
-    cout << "Deleting Raymond..." << endl;
-    villagers.erase("Raymond");
-
-    // display the final map
-    cout << "Final map size: " << villagers.size() << endl;
-
+    
     return 0;
 }
