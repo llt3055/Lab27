@@ -31,7 +31,6 @@ int main() {
 
    int choice = 0;
     while (choice != 4) {
-        // 显示菜单
         cout << "\n1. Increase Friendship" << endl;
         cout << "2. Decrease Friendship" << endl;
         cout << "3. Search for Villager" << endl;
@@ -47,32 +46,28 @@ int main() {
         
         auto it = villagers.find(name);
         
-        if (it = villagers.end()) {
-            if (choice = 1) {
-    
+        if (it != villagers.end()) {
+            if (choice == 1) {
                 get<0>(it->second)++;
                 cout << "Friendship increased for " << name << "!" << endl;
             } 
-            int& level = get<0>(it->second); 
-            else if (choice = 2) {
-     
-                
-                if (level >= 0) {
+            else if (choice == 2) {
+                int& level = get<0>(it->second);              
+                if (level > 0) {
                     level--;
                     cout << "Friendship decreased for " << name << "." << endl;
                 } else {
                     cout << "Friendship level is already at 0!" << endl;
                 }
             } 
-        
-                cout << it.first << " [" << get(it->second) << ", " 
-                     << get(it->second) << ", " << get(it->second) << "]" << endl;
+            else if (choice == 3) {
+                cout << it->first << " [" << get<0>(it->second) << ", " 
+                     << get<1>(it->second) << ", " << get<2>(it->second) << "]" << endl;
             }
         } else {
             cout << name << " not found in the village." << endl;
         }
-
-        display_villagers(villagers);
+        display_villagers(villagers, "Villager details:");
     }
     return 0;
 }
