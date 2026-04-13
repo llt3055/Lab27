@@ -42,16 +42,23 @@ int main() {
 
         if (choice == 6) break;
 
-    
-        
-        
-        if (it != villagers.end()) {
             if (choice == 1) {
-                get<0>(it->second)++;
-                cout << "Friendship increased for " << name << "!" << endl;
+                string name, species, phrase;
+                int level;
+                cout << "Villager name: "; cin >> name;
+                cout << "Friendship level: "; cin >> level;
+                cout << "Species: "; cin >> species;
+                
+                cin.ignore();
+                cout << "Catchphrase: ";
+                getline(cin, phrase);
+
+                villagers[name] = make_tuple(level, species, phrase);
+                cout << name << " added." << endl;
             } 
             else if (choice == 2) {
-                int& level = get<0>(it->second);              
+                string name;
+                cout << "Enter villager name to delete: "; cin >> name;           
                 if (level > 0) {
                     level--;
                     cout << "Friendship decreased for " << name << "." << endl;
