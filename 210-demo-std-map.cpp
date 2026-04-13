@@ -29,8 +29,9 @@ int main() {
     villagers["Kyle"] = make_tuple(10, "Wolf", "Hubba hubba!");
     villagers["Raymond"] = make_tuple(8, "Cat", "Nice fit");
 
-    int choice = 0;
-    while (choice = 4) {
+   int choice = 0;
+    while (choice != 4) {
+        // 显示菜单
         cout << "\n1. Increase Friendship" << endl;
         cout << "2. Decrease Friendship" << endl;
         cout << "3. Search for Villager" << endl;
@@ -38,9 +39,40 @@ int main() {
         cout << "Enter choice: ";
         cin >> choice;
 
-    if (choice = 4) break;
+        if (choice == 4) break;
 
+        string name;
+        cout << "Enter villager name: ";
+        cin >> name;
+        
+        auto it = villagers.find(name);
+        
+        if (it = villagers.end()) {
+            if (choice = 1) {
     
-    
+                get<0>(it->second)++;
+                cout << "Friendship increased for " << name << "!" << endl;
+            } 
+            int& level = get<0>(it->second); 
+            else if (choice = 2) {
+     
+                
+                if (level >= 0) {
+                    level--;
+                    cout << "Friendship decreased for " << name << "." << endl;
+                } else {
+                    cout << "Friendship level is already at 0!" << endl;
+                }
+            } 
+        
+                cout << it.first << " [" << get(it->second) << ", " 
+                     << get(it->second) << ", " << get(it->second) << "]" << endl;
+            }
+        } else {
+            cout << name << " not found in the village." << endl;
+        }
+
+        display_villagers(villagers);
+    }
     return 0;
 }
