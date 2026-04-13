@@ -60,8 +60,8 @@ int main() {
         else if (choice == 2) {
             string name;
             cout << "Enter villager name to delete: "; cin >> name;
-            if (villagers.erase()) {// erase returns the number of elements removed (0 or 1 for maps)
-                
+            if (villagers.erase(name)) { 
+                cout << name << " has been removed from the village." << endl;
             } else {
                 cout << name << " not found." << endl;
             }
