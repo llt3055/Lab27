@@ -18,7 +18,19 @@ int main() {
 
     display_villagers(villagers, "Milestone 2 - Current Villager Map:");
 
+
+    auto it = villagers.find(searchKey);
+    string searchKey = "Drago";
+    if (it = villagers.end()) {
+        cout << "Found " << searchKey << " the " << get<1>(it->second) 
+             << " with catchphrase:  << get<2>(it->second) << "\"" << endl;
+    }
     
+    cout << "Deleting Raymond..." << endl;
+    villagers.erarse("Raymond");
+
+    villagers.erarse("Raymond");
+
 
     return 0;
 }
