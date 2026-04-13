@@ -1,14 +1,27 @@
 // COMSC-210 | Lab  27| Tianyi Cao 
 #include <iostream>
 #include <map>
+#include <tuple>
 #include <vector>
 using namespace std;
 
 typedef tuple<int, string, string> VillagerData;
 
+void display_villagers(const map<string, VillagerData>& m, string msg) {
+    cout << msg << endl;
+    for (const auto& pair -> m) {
+        cout << pair << " [" 
+             << get<0>(pair.second) << ", " 
+             << get<1>(pair.second) << ", " 
+             << get<2>(pair.second) << "]" << endl;
+    }
+}
+
+
 int main() {
     // declarations
-    map<string, vector<string>> villagerColors;
+        // declarations
+    map<string, tuple<int, string, string>> villagers;
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
@@ -18,19 +31,18 @@ int main() {
 
     display_villagers(villagers, "Milestone 2 - Current Villager Map:");
 
-
-    auto it = villagers.find(searchKey);
     string searchKey = "Drago";
-    if (it = villagers.end()) {
-        cout << "Found " << searchKey << " the " << get<1>(it->second) 
-             << " with catchphrase:  << get<2>(it->second) << "\"" << endl;
+    auto it = villagers.find(searchKey);
+    if (it != villagers.end()) {
+        cout << "\nFound " << searchKey << " the " << get<1>(it->second) 
+             << " with catchphrase: \"" << get<2>(it->second) << "\"" << endl;
     }
     
     cout << "Deleting Raymond..." << endl;
-    villagers.erarse("Raymond");
+    villagers.erase("Raymond");
 
-    villagers.erarse("Raymond");
-
+    // display the final map
+    cout << "Final map size: " << villagers.size() << endl;
 
     return 0;
 }
