@@ -31,9 +31,9 @@ int main() {
 
    int choice = 0;
     while (choice != 6) {
-        cout << "\n1. Increase Friendship" << endl;
-        cout << "2. Decrease Friendship" << endl;
-        cout << "3. Search for Villager" << endl;
+        cout << "\n1. Add Villager" << endl;
+        cout << "2. Delete Villager" << endl;
+        cout << "3. Increase Friendship" << endl;
         cout << "4. Decrease Friendship" << endl;
         cout << "5. Search for Villager" << endl;
         cout << "6. Exit" << endl;
@@ -49,13 +49,22 @@ int main() {
             cout << "Villager name: "; cin >> name;
             cout << "Friendship level: "; cin >> level;
             cout << "Species: "; cin >> species;
-            
+            // Clear the newline left in the input buffer
             cin.ignore(); 
             cout << "Catchphrase: ";
             getline(cin, phrase);
-            
+            // Insert into map
             villagers[name] = make_tuple(level, species, phrase);
             cout << name << " added." << endl;
+        }
+        else if (choice == 2) {
+            string name;
+            cout << "Enter villager name to delete: "; cin >> name;
+            if (villagers.erase()) {// erase returns the number of elements removed (0 or 1 for maps)
+                
+            } else {
+                cout << name << " not found." << endl;
+            }
         }
         // Deletion
         else if (choice >= 3 && choice <= 5) {
