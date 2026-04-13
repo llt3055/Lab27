@@ -8,9 +8,9 @@ using namespace std;
 typedef tuple<int, string, string> VillagerData;
 
 void display_villagers(const map<string, VillagerData>& m, string msg) {
-    cout << msg << endl;
-    for (const auto& pair -> m) {
-        cout << pair << " [" 
+    cout << "\n" << msg << endl;
+    for (const auto& pair : m) {
+        cout << pair.first << " [" 
              << get<0>(pair.second) << ", " 
              << get<1>(pair.second) << ", " 
              << get<2>(pair.second) << "]" << endl;
