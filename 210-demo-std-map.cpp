@@ -58,17 +58,23 @@ int main() {
             } 
             else if (choice == 2) {
                 string name;
-                cout << "Enter villager name to delete: "; cin >> name;           
-                if (level > 0) {
-                    level--;
-                    cout << "Friendship decreased for " << name << "." << endl;
+                cout << "Enter villager name to delete: "; cin >> name;
+                if (villagers.erase(name)) {
+                    cout << name << " has left the village." << endl;
                 } else {
-                    cout << "Friendship level is already at 0!" << endl;
+                    cout << name << " not found." << endl;
                 }
-            } 
-            else if (choice == 3) {
-                cout << it->first << " [" << get<0>(it->second) << ", " 
-                     << get<1>(it->second) << ", " << get<2>(it->second) << "]" << endl;
+            }
+            else if (choice >= 3 && choice <= 5) {
+                string name;
+                cout << "Enter villager name to search: "; cin >> name;
+                auto it = villagers.find(name);
+                if (it != villagers.end()) {
+                    cout << it->first << " [" << get<0>(it->second) << ", " 
+                         << get<1>(it->second) << ", " << get<2>(it->second) << "]" << endl;
+                } else {
+                    cout << name << " not found in the village." << endl;
+                }
             }
         } else {
             cout << name << " not found in the village." << endl;
