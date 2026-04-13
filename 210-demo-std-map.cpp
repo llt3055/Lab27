@@ -40,22 +40,24 @@ int main() {
         cout << "Enter choice: ";       
         cin >> choice;
 
+        // Exit condition
         if (choice == 6) break;
-
-            if (choice == 1) {
-                string name, species, phrase;
-                int level;
-                cout << "Villager name: "; cin >> name;
-                cout << "Friendship level: "; cin >> level;
-                cout << "Species: "; cin >> species;
-                
-                cin.ignore();
-                cout << "Catchphrase: ";
-                getline(cin, phrase);
-
-                villagers[name] = make_tuple(level, species, phrase);
-                cout << name << " added." << endl;
-            } 
+        // Handle choices
+        if (choice == 1) {
+            string name, species, phrase;
+            int level;
+            cout << "Villager name: "; cin >> name;
+            cout << "Friendship level: "; cin >> level;
+            cout << "Species: "; cin >> species;
+            
+            cin.ignore(); 
+            cout << "Catchphrase: ";
+            getline(cin, phrase);
+            
+            villagers[name] = make_tuple(level, species, phrase);
+            cout << name << " added." << endl;
+        }
+        // Deletion
             else if (choice == 2) {
                 string name;
                 cout << "Enter villager name to delete: "; cin >> name;
@@ -66,16 +68,15 @@ int main() {
                 }
             }
             else if (choice >= 3 && choice <= 5) {
-                string name;
-                cout << "Enter villager name to search: "; cin >> name;
-                auto it = villagers.find(name);
-                if (it != villagers.end()) {
-                    cout << it->first << " [" << get<0>(it->second) << ", " 
-                         << get<1>(it->second) << ", " << get<2>(it->second) << "]" << endl;
-                } else {
-                    cout << name << " not found in the village." << endl;
+            string name;
+            cout << "Enter villager name: "; cin >> name;
+            auto it = villagers.find(name);
+
+            if (it != villagers.end()) {
+                if (choice == 3) {
+                    get<0>(it->second)++;
+                    cout << "Friendship increased for " << name << "!" << endl;
                 }
-            }
         } else {
             cout << name << " not found in the village." << endl;
         }
