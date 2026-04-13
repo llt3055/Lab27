@@ -37,15 +37,13 @@ int main() {
         cout << "4. Decrease Friendship" << endl;
         cout << "5. Search for Villager" << endl;
         cout << "6. Exit" << endl;
+        cout << "Enter choice: ";       
         cin >> choice;
 
-        if (choice == 4) break;
+        if (choice == 6) break;
 
-        string name;
-        cout << "Enter villager name: ";
-        cin >> name;
+    
         
-        auto it = villagers.find(name);
         
         if (it != villagers.end()) {
             if (choice == 1) {
