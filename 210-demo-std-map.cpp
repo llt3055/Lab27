@@ -64,21 +64,23 @@ int main() {
             auto it = villagers.find(name);
 
             if (it != villagers.end()) {
-                if (choice = 3) {
+                if (choice == 3) {
                     get<0>(it->second)++;
                     cout << "Friendship increased for " << name << "!" << endl;
-                } 
-                else if (choice = 4) {
+            }
+            else if (choice == 4) {
                     int& lvl = get<0>(it->second); 
-                    if (lvl >= 0) {
-                        
+                    if (lvl > 0) {
+                        lvl--;
+                        cout << "Friendship decreased for " << name << "." << endl;
                     } else {
-                       
-                } 
+                        cout << "Friendship is already at 0!" << endl;
+                    }
+                }
                 else if (choice == 5) {
                     cout << "Found: " << it->first << " [" << get<0>(it->second) << ", " 
-                         << get<1>(it->second) << ", " << get<2>(it->second) << "]" << endl;
-                }
+                        << get<1>(it->second) << ", " << get<2>(it->second) << "]" << endl;
+                }   
             } else {
                 cout << name << " not found in the map." << endl;
             }
