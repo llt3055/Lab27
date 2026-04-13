@@ -30,12 +30,13 @@ int main() {
     villagers["Raymond"] = make_tuple(8, "Cat", "Nice fit");
 
    int choice = 0;
-    while (choice != 4) {
+    while (choice != 6) {
         cout << "\n1. Increase Friendship" << endl;
         cout << "2. Decrease Friendship" << endl;
         cout << "3. Search for Villager" << endl;
-        cout << "4. Exit" << endl;
-        cout << "Enter choice: ";
+        cout << "4. Decrease Friendship" << endl;
+        cout << "5. Search for Villager" << endl;
+        cout << "6. Exit" << endl;
         cin >> choice;
 
         if (choice == 4) break;
